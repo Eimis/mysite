@@ -12,12 +12,12 @@ def contact(request):
 		if request.POST.get("email") and "@" not in request.POST["email"]:
 			errors.append("Please enter a valid email address")
 		if not errors:
-			"""send_mail(
+			send_mail(
 				request.POST["subject"],
 				request.POST["message"],
-				request.POST.get("email", "noreply@example.com"),
-				["siteowner@example.com"],
-			)"""
+				request.POST.get("email", "noreply@example.com"), # from-jauciu defaultas, nes "not required" fieldas modelyje
+				["siteowner@example.com"], #to
+			)
 			return HttpResponseRedirect("/contact/thanks/")
 	return render(request, "contact_form.html", {"errors" : errors})
 
